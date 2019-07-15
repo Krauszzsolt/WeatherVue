@@ -21,7 +21,7 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" @click="login" >Login</v-btn>
+                  <v-btn color="primary" @click="login" to="/layout" >Login</v-btn>
                 </v-card-actions>
               </v-card>
             </v-flex>
@@ -49,7 +49,9 @@ export default class LoginFields extends Vue {
 private datas! : loginModel;
 
 login(){
-  console.log(this.datas);
+  localStorage.setItem('userName', this.datas.userName)
+  localStorage.setItem('password', this.datas.password)
+    console.log(this.datas);
 }
 
 }
