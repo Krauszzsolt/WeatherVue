@@ -21,7 +21,7 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" @click="login" to="/layout" >Login</v-btn>
+                  <v-btn color="primary" @click="login"  >Login</v-btn>
                 </v-card-actions>
               </v-card>
             </v-flex>
@@ -35,6 +35,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { loginModel } from '../../models/login.model';
+import router from '../../../router';
 
 
 
@@ -46,11 +47,17 @@ export default class LoginFields extends Vue {
       password: ""
     })
   })
+
+
 private datas! : loginModel;
 
 login(){
-  localStorage.setItem('userName', this.datas.userName)
-  localStorage.setItem('password', this.datas.password)
+  localStorage.setItem('userName', 'asd')
+  localStorage.setItem('password', 'asd')
+  if(this.datas.userName === localStorage.getItem('userName') && 
+  this.datas.password === localStorage.getItem('password') ){
+    router.push({path: 'layout'});
+    }
     console.log(this.datas);
 }
 
