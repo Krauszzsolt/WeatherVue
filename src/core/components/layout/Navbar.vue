@@ -1,10 +1,7 @@
 <template>
-  <v-card height="200px" flat>
+  <v-card class="navbar" flat>
     <v-bottom-nav :active.sync="bottomNav" :value="true" absolute color="transparent">
 
-      <v-btn color="teal" flat value="WeathertCity" @click="componentName =  'WeathertCity' ">
-        <span>WeathertCity</span>
-      </v-btn>
 
       <v-btn color="teal" flat value="AddCity" @click="componentName =  'AddCity'">
         <span>AddCity</span>
@@ -40,5 +37,11 @@ export default class Navbar extends Vue{
 @Prop() componentName: string = 'MyCity'
 }
 
-
 </script>
+
+<style lang="scss" scoped>
+
+.navbar{
+  height: 100%;
+}
+</style>

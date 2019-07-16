@@ -1,20 +1,31 @@
 <template>
-  <div class="home">
-   <Navbar /> 
-    <img alt="Vue logo" src="../../assets/logo.png">
-    <div>Hey YoYo</div>
-     
-  </div>
+
+    <div class = "outer">
+      <Navbar />
+  
+ </div>
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator';;
-import Navbar from './../components/layout/Navbar.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Navbar from "./../components/layout/Navbar.vue";
 
 @Component({
   components: {
-    Navbar,
-  },
+    Navbar
+  }
 })
-export default class Layout extends Vue{ }
+export default class Layout extends Vue {}
 </script>
+
+<style lang="scss" scoped>
+
+
+.outer{
+  width:100%;
+  height: 650px;
+  min-height:80%;
+  border:5px 
+}
+
+</style>
