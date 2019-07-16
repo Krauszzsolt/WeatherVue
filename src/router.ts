@@ -16,7 +16,16 @@ export default new Router({
     {
       path: '/layout',
       name: 'layout',
-      component: () => import('./core/views/Layout.vue') 
+      component: () => import('./core/views/Layout.vue') ,
+      children: [
+        {
+          path: "/my-city",
+          component: () =>
+            import(/* webpackChunkName: "tasks" */ "./features/myCity/view/my-city.vue"),
+            
+        },
+      ]
     }
+  
   ]
 })
