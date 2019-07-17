@@ -1,8 +1,8 @@
 
 <template>
   <v-layout row>
-    <v-flex xs12 sm6 offset-sm3 class="my-city-card">
-      <v-card class="my-city-tile">
+    <v-flex xs12 sm6 offset-sm3 class="add-city-card">
+      <v-card class="add-city-tile">
         <v-toolbar color="cyan" dark class="my-city-tile">
           <v-toolbar-title>Cities</v-toolbar-title>
 
@@ -14,7 +14,7 @@
             <v-icon>search</v-icon>
           </v-btn>
         </v-toolbar>
-        <v-list two-line class="my-city-tile">
+        <v-list two-line class="add-city-tile">
           <template v-for="(item, index) in items">
             <v-subheader v-if="item.header" :key="item.header">{{ item.header }}</v-subheader>
             <v-divider v-else-if="item.divider" :key="index" :inset="item.inset"></v-divider>
@@ -69,17 +69,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.my-city-card {
-  min-width: 90% !important;
+.add-city-card {
+  min-width: 90% ;
   margin: 40px;
 }
 
-.my-city-title {
+.add-city-title {
   width: 100%;
 }
 
-.my-city-img {
-  width: 100%;
-  height: 50px;
-}
+
 </style>
