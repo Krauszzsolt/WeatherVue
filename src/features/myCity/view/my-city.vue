@@ -7,7 +7,7 @@
           <v-toolbar-title>Cities</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-flex xs12 sm6 md3>
-            <v-text-field placeholder="Search"></v-text-field>
+            <v-text-field v-model = "cityname" placeholder="Search"></v-text-field>
           </v-flex>
           <v-btn icon @click="getCity" >
             <v-icon>search</v-icon>
@@ -48,6 +48,7 @@ import Axios from "axios";
 export default class MyCity extends Vue {
 
   public cities: List[] = [];
+  public cityname: string = "";
 
   showWeather(city : List) {
     console.log("showweather");
@@ -57,7 +58,7 @@ export default class MyCity extends Vue {
   }
 
   getCity() {
-    Api.Cities.getCityGroupData(" ", " ", " ").then(resp => {
+    Api.Cities.getCityGroupData(this.cityname, " ", " ").then(resp => {
       this.cities = resp.data.list;
       console.log(this.cities);
     });
