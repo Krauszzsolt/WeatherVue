@@ -1,6 +1,6 @@
 <template>
   <v-layout row>
-    <v-btn color="teal" flat value="MyCity" @click="getCity">
+    <v-btn color="teal" flat @click="getCity">
       <span>GetThisCity</span>
     </v-btn>
 
@@ -17,19 +17,19 @@
           </v-btn>
         </v-toolbar>
         <v-list two-line class="my-city-tile">
-          <!-- <div v-if="!!(cities)">
-            <template v-for="(cities, index) in items">
-              <v-subheader v-if="cities.name" :key="cities.name">{{ item.name }}</v-subheader>
-              <v-list-tile v-else :key="cities.name" avatar @click="showWeather">
+          <div v-if="!!(cities)">
+            <template v-for="(city, index) in cities">
+              <v-subheader v-if="city.name" :key="city.name">{{ city.name }}</v-subheader>
+              <v-list-tile v-else :key="city.name" avatar @click="showWeather">
                 <v-list-tile-avatar>
-                  <img :src="item.avatar" />
+                  <img :src="city.name" />
                 </v-list-tile-avatar>
                 <v-list-tile-content>
-                  <v-list-tile-title v-html="item.title"></v-list-tile-title>
+                  <v-list-tile-title v-html="city.name"></v-list-tile-title>
                 </v-list-tile-content>
               </v-list-tile>
             </template>
-          </div> -->
+          </div>
         </v-list>
       </v-card>
     </v-flex>
@@ -40,13 +40,14 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { Api } from "../../services/api";
-import { Weather, List } from "../../models/weather.model";
+import { Weather, List } from '../../models/weather.model';
 import Axios from "axios";
-export interface item {
-  avatar: string;
-  title: string;
-}
 
+
+@Component({
+  components: {
+  }
+})
 export default class MyCity extends Vue {
   // @Prop( {
   //     default: () => (
@@ -63,27 +64,25 @@ export default class MyCity extends Vue {
   //          }
   //     )
   //   }
-  //   )      items!: item[];
 
-    // Api.Cities.getCitiesData("london").then(resp => {
-    //   console.log(resp);
-    // });
-    // Api.Cities.getCityGroupData(" ", " ", " ").then(resp => {
-    //   console.log(resp);
-    //   this.cities = resp.data;
-    // });
 
-  private cities: any;
+
+showWeather(){
+  //doo
+}
+
+
+  public cities: List[] = [];
   getCity() {
+  
+  Api.Cities.getCityGroupData(" ", " ", " ").then(resp => {
+    
+    this.cities = resp.data.list;
+    console.log(this.cities);
+  });
 
-    Axios.get("http://api.openweathermap.org/data/2.5/find?q=london&cnt=10&APPID=57e71e29e268016d12932485490524a7").then(
-        resp => {
-            console.log(resp);
-        this.cities = resp.data;
-        }
-    )
+
   }
-
 }
 </script>
 

@@ -12,7 +12,7 @@ export class Api {
 
     public static Cities = class {
         public static getCitiesData = (city: string) => {
-            return Axios.get(FIND_NAME_URL + city + KEY_URL);
+            return Axios.get<Welcome>(FIND_NAME_URL + city + KEY_URL);
 
         };
         public static getCityGroupData = (lat: string,lon: string, cnt: string) => {
