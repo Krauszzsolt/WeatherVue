@@ -18,7 +18,7 @@
             <v-container id="scroll-target" style="max-height: 380px" class="scroll-y">
               <template v-for="(city) in cities">
                 <!-- <v-subheader v-if="city.name" :key="city.name">{{ city.name }}</v-subheader> -->
-                <v-list-tile v-if :key="city.name" avatar @click="showWeather">
+                <v-list-tile v-if :key="city.name" avatar @click="showWeather(city)">
                   <v-list-tile-avatar>
                     <img src="@/assets/10d.png" />
                   </v-list-tile-avatar>
@@ -47,13 +47,15 @@ import Axios from "axios";
 })
 export default class MyCity extends Vue {
 
+  public cities: List[] = [];
 
-  showWeather() {
+  showWeather(city : List) {
     console.log("showweather");
-    this.$router.push("/weather")
+    localStorage.setItem('CityID', city.id.toString() )  
+    this.$router.push("/weather");
+
   }
 
-  public cities: List[] = [];
   getCity() {
     Api.Cities.getCityGroupData(" ", " ", " ").then(resp => {
       this.cities = resp.data.list;
@@ -61,6 +63,8 @@ export default class MyCity extends Vue {
     });
   }
 }
+
+
 </script>
 
 
