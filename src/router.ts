@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './core/views/Login.vue'
+import WeatherRoutes from './features/weatherInCity/weahter.routes';
 
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-  
+
     {
       path: '/',
       name: 'login',
@@ -16,16 +17,14 @@ export default new Router({
     {
       path: '/layout',
       name: 'layout',
-      component: () => import('./core/views/Layout.vue') ,
-      children: [
-        {
-          path: "/my-city",
-          component: () =>
-            import(/* webpackChunkName: "tasks" */ "./features/myCity/view/my-city.vue"),
-            
-        },
-      ]
-    }
-  
+      component: () => import('./core/views/Layout.vue'),
+    },
+    {
+      path: "/weather",
+      component: () => import('./features/weatherInCity/view/weather-in-city.vue'),
+      children: WeatherRoutes
+
+    },
   ]
-})
+}
+)
