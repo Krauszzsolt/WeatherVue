@@ -1,17 +1,14 @@
 <template>
   <v-layout row>
-
     <v-flex xs12 sm6 offset-sm3 class="my-city-card">
       <v-card class="my-city-tile">
         <v-toolbar color="cyan" dark class="my-city-tile">
           <v-toolbar-title>Cities</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-flex xs12 sm6 md3>
-            <v-text-field v-model = "cityname" placeholder="Search"></v-text-field>
-          </v-flex>
-          <v-btn icon @click="getCity" >
+
+          <v-btn icon @click="getCity">
             <v-icon>search</v-icon>
-          </v-btn >
+          </v-btn>
         </v-toolbar>
         <v-list two-line class="my-city-tile">
           <div v-if="!!(cities)">
@@ -46,26 +43,38 @@ import Axios from "axios";
   components: {}
 })
 export default class MyCity extends Vue {
-
   public cities: List[] = [];
   public cityname: string = "";
 
-  showWeather(city : List) {
+  showWeather(city: List) {
     console.log("showweather");
-    localStorage.setItem('CityID', city.id.toString() )  
+    localStorage.setItem("CityID", city.id.toString());
     this.$router.push("/weather");
-
   }
 
   getCity() {
+
+    if (!!localStorage.getItem("idList")) {
+      console.log("vaan benne");
+      const IDs: string[] = JSON.parse(localStorage.getItem("idList") || "");
+
+      IDs.forEach(i => {
+
+      Api.Cities.getCityById(i).then(resp => {
+      this.cities.push(resp.data) 
+      console.log(this.cities);
+    });
+      });
+
+      
+    }
+
     Api.Cities.getCityGroupData(this.cityname, " ", " ").then(resp => {
       this.cities = resp.data.list;
       console.log(this.cities);
     });
   }
 }
-
-
 </script>
 
 
