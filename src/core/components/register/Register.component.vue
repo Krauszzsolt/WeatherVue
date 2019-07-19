@@ -7,7 +7,7 @@
             <v-flex xs12 sm8 md4>
               <v-card class="elevation-12">
                 <v-toolbar dark color="primary">
-                  <v-toolbar-title>Login</v-toolbar-title>
+                  <v-toolbar-title>Sign up</v-toolbar-title>
                   <v-spacer></v-spacer>
                   <v-tooltip bottom>
                       <v-icon large></v-icon>
@@ -15,13 +15,15 @@
                 </v-toolbar>
                 <v-card-text>
                   <v-form>
-                    <v-text-field v-model="datas.userName" name="login" label="Login" type="text"></v-text-field>
-                    <v-text-field v-model="datas.password" name="password" label="Password" id="password" type="password"></v-text-field>
+                    <v-text-field v-model="datas.userName" name="rlogin" label="Login" type="text"></v-text-field>
+                    <v-text-field v-model="datas.email" name="re-mail" label="e-mail" type="text"></v-text-field>
+                    <v-text-field v-model="datas.confirmed" name="rpassword" label="Password" id="password" type="password"></v-text-field>
+                     <v-text-field v-model="datas.password" name="rconfirm" label="Password Confirmed" id="confirm" type="password"></v-text-field>
                   </v-form>
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" @click="login"  >Login</v-btn>
+                  <v-btn color="primary" @click="register"  >Sign up</v-btn>
                 </v-card-actions>
               </v-card>
             </v-flex>
@@ -34,7 +36,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { loginModel } from '../../models/login.model';
+import { registerModel } from '../../models/register.model';
 import router from '../../../router';
 
 
@@ -44,19 +46,23 @@ export default class LoginFields extends Vue {
     @Prop({
     default: () => ({
       userName: "",
-      password: ""
+      password: "",
+      confirmed: "",
+      email: ""
     })
   })
 
 
-private datas! : loginModel;
+private datas! : registerModel;
 
-login(){
-
-  if(this.datas.userName === localStorage.getItem(this.datas.userName) && 
-  this.datas.password === localStorage.getItem(this.datas.userName) ){
-    router.push({path: 'layout'});
-    }
+register(){
+  if( !(localStorage.getItem(this.datas.userName )) && 
+  this.datas.password === this.datas.confirmed ){
+  localStorage.setItem(this.datas.userName , this.datas.userName)
+  localStorage.setItem(this.datas.password , this.datas.password)
+  }
+    router.push({path: ''});
+    
     console.log(this.datas);
 }
 
