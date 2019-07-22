@@ -19,14 +19,19 @@
                     <img src="@/assets/10d.png" />
                   </v-list-tile-avatar>
                   <v-list-tile-content>
-                    <v-list-tile-title v-html="city.name"></v-list-tile-title>
+                    <v-list-tile-title v-html="city.name + ' '"></v-list-tile-title>
                   </v-list-tile-content>
+
+                  <v-list-tile-action>
+                    <v-btn icon ripple>
+                      <v-icon color="grey lighten-1" @click="deleteItem = true">delete</v-icon>
+                    </v-btn>
+                  </v-list-tile-action>
                 </v-list-tile>
               </template>
             </v-container>
           </div>
         </v-list>
-      
       </v-card>
     </v-flex>
   </v-layout>
@@ -45,11 +50,22 @@ import Axios from "axios";
 export default class MyCity extends Vue {
   public cities: List[] = [];
   public cityname: string = "";
+  public deleteItem: boolean = false;
+  public IDs: string[] = [];
 
   showWeather(city: List) {
-    console.log("showweather");
-    localStorage.setItem("CityID", city.id.toString());
-    this.$router.push("/weather");
+    if (this.deleteItem === false) {
+      console.log("showweather");
+      localStorage.setItem("CityID", city.id.toString());
+      this.$router.push("/weather");
+    } else {
+
+      this.IDs = JSON.parse(localStorage.getItem("idList") || "");
+      this.IDs.splice(this.IDs.findIndex(x => x === city.id.toString()), 1);
+      localStorage.setItem("idList", JSON.stringify(this.IDs));
+      this.cities.splice(this.cities.findIndex(x => x === city), 1);
+      this.deleteItem = false;
+    }
   }
 
   getCity() {
