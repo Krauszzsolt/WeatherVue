@@ -109,10 +109,8 @@ export default class Weather extends Vue {
   }
 
   get() {
-    console.log(this.cityID);
     Api.Cities.getCityById(this.cityID).then(resp => {
       this.city = resp.data;
-      console.log(this.city);
       this.KEY--;
     });
   }

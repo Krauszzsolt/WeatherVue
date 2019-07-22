@@ -63,7 +63,6 @@ register(){
   }
     router.push({path: '/'});
     
-    console.log(this.datas);
 }
 
 }

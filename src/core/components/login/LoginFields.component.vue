@@ -62,7 +62,6 @@ export default class LoginFields extends Vue {
       router.push({ path: "layout" });
 
     }
-    console.log(this.datas);
   }
 }
 </script>

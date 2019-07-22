@@ -62,18 +62,15 @@ export default class MyCity extends Vue {
   }
 
   addCity(city: List) {
-    console.log("addCity");
     const id: string = city.id.toString();
     this.listID = [];
 
     if (!!(localStorage.getItem(localStorage.getItem("currentUser") || "" ))) {
-      console.log("vaan benne");
      const IDs: string[] = JSON.parse(localStorage.getItem( localStorage.getItem("currentUser") || "") || "");
       IDs.forEach(i => {
         this.listID.push(i);
       });
 
-      console.log(this.listID);
     }
     if (!this.listID.some(x => x === id)){
       this.listID.push(id);
@@ -89,7 +86,6 @@ export default class MyCity extends Vue {
   getCity() {
     Api.Cities.getCityGroupData(this.cityname, " ", " ").then(resp => {
       this.cities = resp.data.list;
-      console.log(this.cities);
     });
   }
 }

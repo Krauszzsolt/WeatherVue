@@ -55,7 +55,6 @@ export default class MyCity extends Vue {
 
   showWeather(city: List) {
     if (this.deleteItem === false) {
-      console.log("showweather");
       localStorage.setItem("CityID", city.id.toString());
       this.$router.push("/weather");
     } else {
@@ -70,20 +69,17 @@ export default class MyCity extends Vue {
 
   getCity() {
     if (!!localStorage.getItem(localStorage.getItem("currentUser") || "" )) {
-      console.log("vaan benne");
       const IDs: string[] = JSON.parse(localStorage.getItem(localStorage.getItem("currentUser") || "" ) || "");
 
       IDs.forEach(i => {
         Api.Cities.getCityById(i).then(resp => {
           this.cities.push(resp.data);
-          console.log(this.cities);
         });
       });
     }
 
     Api.Cities.getCityGroupData(this.cityname, " ", " ").then(resp => {
       this.cities = resp.data.list;
-      console.log(this.cities);
     });
   }
 }
