@@ -66,10 +66,9 @@ export default class MyCity extends Vue {
     const id: string = city.id.toString();
     this.listID = [];
 
-    if (!!localStorage.getItem("idList")) {
+    if (!!(localStorage.getItem(localStorage.getItem("currentUser") || "" ))) {
       console.log("vaan benne");
-      const IDs: string[] = JSON.parse(localStorage.getItem("idList") || "");
-
+     const IDs: string[] = JSON.parse(localStorage.getItem( localStorage.getItem("currentUser") || "") || "");
       IDs.forEach(i => {
         this.listID.push(i);
       });
@@ -84,7 +83,7 @@ export default class MyCity extends Vue {
        this.showSnackbar('Ezt a várost már hozzáadta.','error')
      }
 
-    localStorage.setItem("idList", JSON.stringify(this.listID));
+    localStorage.setItem(localStorage.getItem("currentUser") || "" , JSON.stringify(this.listID));
   }
 
   getCity() {

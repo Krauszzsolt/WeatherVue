@@ -60,18 +60,18 @@ export default class MyCity extends Vue {
       this.$router.push("/weather");
     } else {
 
-      this.IDs = JSON.parse(localStorage.getItem("idList") || "");
+      this.IDs = JSON.parse(localStorage.getItem(localStorage.getItem("currentUser") || "" ) || "");
       this.IDs.splice(this.IDs.findIndex(x => x === city.id.toString()), 1);
-      localStorage.setItem("idList", JSON.stringify(this.IDs));
+      localStorage.setItem(localStorage.getItem("currentUser") || "" , JSON.stringify(this.IDs));
       this.cities.splice(this.cities.findIndex(x => x === city), 1);
       this.deleteItem = false;
     }
   }
 
   getCity() {
-    if (!!localStorage.getItem("idList")) {
+    if (!!localStorage.getItem(localStorage.getItem("currentUser") || "" )) {
       console.log("vaan benne");
-      const IDs: string[] = JSON.parse(localStorage.getItem("idList") || "");
+      const IDs: string[] = JSON.parse(localStorage.getItem(localStorage.getItem("currentUser") || "" ) || "");
 
       IDs.forEach(i => {
         Api.Cities.getCityById(i).then(resp => {

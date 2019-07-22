@@ -58,7 +58,9 @@ export default class LoginFields extends Vue {
       this.datas.userName === localStorage.getItem(this.datas.userName) &&
       this.datas.password === localStorage.getItem(this.datas.userName)
     ) {
+      localStorage.setItem('currentUser', this.datas.userName+'IDs')
       router.push({ path: "layout" });
+
     }
     console.log(this.datas);
   }
