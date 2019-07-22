@@ -14,7 +14,6 @@
           <div v-if="!!(cities)">
             <v-container id="scroll-target" style="max-height: 380px" class="scroll-y">
               <template v-for="(city) in cities">
-                <!-- <v-subheader v-if="city.name" :key="city.name">{{ city.name }}</v-subheader> -->
                 <v-list-tile v-if :key="city.name" avatar @click="showWeather(city)">
                   <v-list-tile-avatar>
                     <img src="@/assets/10d.png" />
@@ -27,6 +26,7 @@
             </v-container>
           </div>
         </v-list>
+      
       </v-card>
     </v-flex>
   </v-layout>
@@ -53,20 +53,16 @@ export default class MyCity extends Vue {
   }
 
   getCity() {
-
     if (!!localStorage.getItem("idList")) {
       console.log("vaan benne");
       const IDs: string[] = JSON.parse(localStorage.getItem("idList") || "");
 
       IDs.forEach(i => {
-
-      Api.Cities.getCityById(i).then(resp => {
-      this.cities.push(resp.data) 
-      console.log(this.cities);
-    });
+        Api.Cities.getCityById(i).then(resp => {
+          this.cities.push(resp.data);
+          console.log(this.cities);
+        });
       });
-
-      
     }
 
     Api.Cities.getCityGroupData(this.cityname, " ", " ").then(resp => {

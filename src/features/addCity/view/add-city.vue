@@ -30,6 +30,10 @@
           </div>
         </v-list>
       </v-card>
+      <v-snackbar v-model="snackbar" :bottom="true" :timeout=2000  :color="color">
+        {{ text }}
+        <v-btn  flat @click="snackbar = false">Bezárás</v-btn>
+      </v-snackbar>
     </v-flex>
   </v-layout>
 </template>
@@ -43,31 +47,44 @@ import { Weather, List } from "../../models/weather.model";
   components: {}
 })
 export default class MyCity extends Vue {
-
+  public snackbar: boolean = false;
   public cities: List[] = [];
   public cityname: string = "";
-  public listID: string[] = [] ;
+  public listID: string[] = [];
+  public text: string = '';
+  public color: string = '';
 
-  addCity(city : List) {
+  showSnackbar( message : string, color: string){
+    this.text = message;
+    this.color = color;
+    this.snackbar = true;
+    
+  }
+
+  addCity(city: List) {
     console.log("addCity");
     const id: string = city.id.toString();
     this.listID = [];
-    
-    if(!!localStorage.getItem('idList') )
-    {
-      console.log('vaan benne');
-      const IDs : string[] = JSON.parse( (localStorage.getItem('idList')) || '');
+
+    if (!!localStorage.getItem("idList")) {
+      console.log("vaan benne");
+      const IDs: string[] = JSON.parse(localStorage.getItem("idList") || "");
 
       IDs.forEach(i => {
-        this.listID.push(i) ;
+        this.listID.push(i);
       });
-      
-      console.log( this.listID );
-    
+
+      console.log(this.listID);
     }
-    if(!this.listID.some(x => x === id))   
-    this.listID.push(id)
-    localStorage.setItem('idList',JSON.stringify(this.listID))
+    if (!this.listID.some(x => x === id)){
+      this.listID.push(id);
+      this.showSnackbar('Sikeres hozzáadás.','success')
+     }
+     else{
+       this.showSnackbar('Ezt a várost már hozzáadta.','error')
+     }
+
+    localStorage.setItem("idList", JSON.stringify(this.listID));
   }
 
   getCity() {
@@ -77,8 +94,6 @@ export default class MyCity extends Vue {
     });
   }
 }
-
-
 </script>
 
 
