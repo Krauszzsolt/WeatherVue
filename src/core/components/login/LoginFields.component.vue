@@ -7,7 +7,7 @@
             <v-flex xs12 sm8 md4>
               <v-card class="elevation-12">
                 <v-toolbar dark color="primary">
-                  <v-toolbar-title>Login</v-toolbar-title>
+                  <v-toolbar-title>Felhasználónév</v-toolbar-title>
                   <v-spacer></v-spacer>
                   <v-tooltip bottom>
                     <v-icon large></v-icon>
@@ -15,11 +15,11 @@
                 </v-toolbar>
                 <v-card-text>
                   <v-form>
-                    <v-text-field v-model="datas.userName" name="login" label="Login" type="text"></v-text-field>
+                    <v-text-field v-model="datas.userName" name="Felhasználónév" label="Felhasználónév" type="text"></v-text-field>
                     <v-text-field
                       v-model="datas.password"
-                      name="password"
-                      label="Password"
+                      name="Jelszó"
+                      label="Jelszó"
                       id="password"
                       type="password"
                     ></v-text-field>
@@ -27,7 +27,7 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" @click="login">Login</v-btn>
+                  <v-btn color="primary" @click="login">Bejelentkezés</v-btn>
                 </v-card-actions>
               </v-card>
             </v-flex>

@@ -3,10 +3,10 @@
     <v-flex xs12 sm6 offset-sm3 class="add-city-card">
       <v-card class="add-city-tile">
         <v-toolbar color="cyan" dark class="my-city-tile">
-          <v-toolbar-title>Cities</v-toolbar-title>
+          <v-toolbar-title>Városok</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-flex xs12 sm6 md3>
-            <v-text-field v-model="cityname" placeholder="Search"></v-text-field>
+            <v-text-field v-model="cityname" placeholder="Keresés"></v-text-field>
           </v-flex>
           <v-btn icon @click="getCity">
             <v-icon>search</v-icon>
@@ -22,7 +22,8 @@
                     <img src="@/assets/10d.png" />
                   </v-list-tile-avatar>
                   <v-list-tile-content>
-                    <v-list-tile-title v-html="city.name"></v-list-tile-title>
+                   <v-list-tile-title v-html="city.name + ', '"></v-list-tile-title>
+                    <v-list-tile-title v-html="'Azonosítószám: ' + city.id"></v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
               </template>
@@ -30,14 +31,13 @@
           </div>
         </v-list>
       </v-card>
-      <v-snackbar v-model="snackbar" :bottom="true" :timeout=2000  :color="color">
+      <v-snackbar v-model="snackbar" :color="color" :bottom="true" :timeout=2000>
         {{ text }}
-        <v-btn  flat @click="snackbar = false">Bezárás</v-btn>
+        <v-btn dark flat @click="snackbar = false">Bezárás</v-btn>
       </v-snackbar>
     </v-flex>
   </v-layout>
 </template>
-
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { Api } from "../../services/api";

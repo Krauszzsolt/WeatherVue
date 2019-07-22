@@ -2,15 +2,15 @@
   <v-card class="navbar" flat>
     <v-bottom-nav :active.sync="bottomNav" :value="true" absolute color="transparent">
       <v-btn color="teal" flat  @click="componentName =  'AddCity'">
-        <span>AddCity</span>
+        <span>Város hozzáadása</span>
       </v-btn>
 
       <v-btn color="teal" flat  @click="componentName =  'MyCity' ">
-        <span>MyCity</span>
+        <span>Városaim</span>
       </v-btn>
 
       <v-btn color="teal" flat  to= '/'>
-        <span>Logout</span>
+        <span>Kijelentkezés</span>
       </v-btn>
     </v-bottom-nav>
     <div class="headline text-xs-center pa-3">

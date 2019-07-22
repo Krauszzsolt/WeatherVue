@@ -7,7 +7,7 @@
             <v-flex xs12 sm8 md4>
               <v-card class="elevation-12">
                 <v-toolbar dark color="primary">
-                  <v-toolbar-title>Sign up</v-toolbar-title>
+                  <v-toolbar-title>Regisztárció</v-toolbar-title>
                   <v-spacer></v-spacer>
                   <v-tooltip bottom>
                       <v-icon large></v-icon>
@@ -15,15 +15,15 @@
                 </v-toolbar>
                 <v-card-text>
                   <v-form>
-                    <v-text-field v-model="datas.userName" name="rlogin" label="Login" type="text"></v-text-field>
+                    <v-text-field v-model="datas.userName" name="rlogin" label="Felhasználónév" type="text"></v-text-field>
                     <v-text-field v-model="datas.email" name="re-mail" label="e-mail" type="text"></v-text-field>
-                    <v-text-field v-model="datas.confirmed" name="rpassword" label="Password" id="password" type="password"></v-text-field>
-                     <v-text-field v-model="datas.password" name="rconfirm" label="Password Confirmed" id="confirm" type="password"></v-text-field>
+                    <v-text-field v-model="datas.confirmed" name="rpassword" label="Jelszó" id="password" type="password"></v-text-field>
+                     <v-text-field v-model="datas.password" name="rconfirm" label="Jelszó mégegyszer" id="confirm" type="password"></v-text-field>
                   </v-form>
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" @click="register"  >Sign up</v-btn>
+                  <v-btn color="primary" @click="register"  >Regisztárció</v-btn>
                 </v-card-actions>
               </v-card>
             </v-flex>

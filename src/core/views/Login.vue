@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <v-btn color="teal" flat @click="componentName =  'LoginFields'">
-      <span>Log In</span>
+      <span>Bejelentkezés</span>
     </v-btn>
     <v-btn color="teal" flat @click="componentName =  'Register'">
-      <span>Sign in</span>
+      <span>Regisztráció</span>
     </v-btn>
     <component v-bind:is="componentName"  class="login"></component>
   </div>
