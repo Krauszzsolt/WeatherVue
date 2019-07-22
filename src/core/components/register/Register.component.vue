@@ -7,7 +7,7 @@
             <v-flex xs12 sm8 md4>
               <v-card class="elevation-12">
                 <v-toolbar dark color="primary">
-                  <v-toolbar-title>Regisztárció</v-toolbar-title>
+                  <v-toolbar-title>Regisztráció</v-toolbar-title>
                   <v-spacer></v-spacer>
                   <v-tooltip bottom>
                       <v-icon large></v-icon>
@@ -61,7 +61,7 @@ register(){
   localStorage.setItem(this.datas.userName , this.datas.userName)
   localStorage.setItem(this.datas.password , this.datas.password)
   }
-    router.push({path: ''});
+    router.push({path: '/'});
     
     console.log(this.datas);
 }

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div>Yo Yo Weather-City</div>
-
-    <v-btn color="teal" flat value="AddCity" @click="get">
-      <span>YeeYoo</span>
-    </v-btn>
+    <div class="headline text-xs-center pa-3">
+      <img class="logo" src="@/assets/Wlogo2.png" alt />
+      időjárás előrejelzés
+      <img class="logo" src="@/assets/Wlogo1.png" alt />
+    </div>
 
     <v-container :key="KEY" fluid grid-list-md>
       <template>
@@ -74,10 +74,18 @@
       </template>
       <template footer>
         <v-toolbar class="mt-2" color="indigo" dark dense flat>
-          <v-toolbar-title class="subheading">This is a footer</v-toolbar-title>
+          <v-toolbar-title class="subheading"></v-toolbar-title>
         </v-toolbar>
       </template>
     </v-container>
+        <v-bottom-nav :active.sync="bottomNav" :value="true" absolute color="transparent">
+
+      <v-btn color="teal" flat  to = '/layout' >
+        <span>Vissza</span>
+      </v-btn>
+
+
+    </v-bottom-nav>
   </div>
 </template> 
 
@@ -96,6 +104,10 @@ export default class Weather extends Vue {
   private KEY: number = 0;
   private city!: List;
 
+  created(){
+    this.get()
+  }
+
   get() {
     console.log(this.cityID);
     Api.Cities.getCityById(this.cityID).then(resp => {
@@ -111,6 +123,28 @@ export default class Weather extends Vue {
 .tables{
   display: flex;
   flex-wrap: nowrap;
+}
+
+.v-card {
+  background-color: rgba(white, 0.5) !important;
+}
+.v-list {
+  background-color: rgba(white, 0.5) !important;
+}
+.mb-2{
+   background-color: rgba(#00bcd4, 1 ) !important;
+}
+
+.mt-2{
+   background-color: rgba(#00bcd4, 1 ) !important;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+}
+.headline{
+  padding: 30px;
 }
 
 </style>
