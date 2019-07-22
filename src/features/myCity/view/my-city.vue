@@ -3,12 +3,8 @@
     <v-flex xs12 sm6 offset-sm3 class="my-city-card">
       <v-card class="my-city-tile">
         <v-toolbar color="cyan" dark class="my-city-tile">
-          <v-toolbar-title>Cities</v-toolbar-title>
+          <v-toolbar-title>Városok</v-toolbar-title>
           <v-spacer></v-spacer>
-
-          <v-btn icon @click="getCity">
-            <v-icon>search</v-icon>
-          </v-btn>
         </v-toolbar>
         <v-list two-line class="my-city-tile">
           <div v-if="!!(cities)">
@@ -53,6 +49,10 @@ export default class MyCity extends Vue {
   public deleteItem: boolean = false;
   public IDs: string[] = [];
 
+  created(){
+    this.getCity();
+  }
+
   showWeather(city: List) {
     if (this.deleteItem === false) {
       console.log("showweather");
@@ -94,5 +94,10 @@ export default class MyCity extends Vue {
 .my-city-img {
   width: 50px;
   height: 50px;
+}
+
+.my-city-card{
+    min-width: 60%;
+  margin-left: 20%;
 }
 </style>
