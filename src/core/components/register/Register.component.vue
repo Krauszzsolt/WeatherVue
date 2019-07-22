@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-app id="inspire">
+    <v-app class="register-layout"  id="inspire">
       <v-content>
         <v-container fluid fill-height>
           <v-layout align-center justify-center>
@@ -71,4 +71,7 @@ register(){
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.register-layout {
+  background-color: rgba(0, 0, 0, 0) !important ;
+}
 </style>

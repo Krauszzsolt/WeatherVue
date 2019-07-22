@@ -1,7 +1,7 @@
 <template>
 
     <div class = "outer">
-      <Navbar />
+      <Navbar class= "navbar" />
   
  </div>
 </template>
@@ -20,6 +20,9 @@ export default class Layout extends Vue {}
 
 <style lang="scss" scoped>
 
+.navbar{
+  background-color: rgba(0,0,0,0)
+}
 
 .outer{
   width:100%;

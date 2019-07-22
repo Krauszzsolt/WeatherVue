@@ -84,8 +84,8 @@ export default class MyCity extends Vue {
 
 <style lang="scss" scoped>
 .add-city-card {
-  min-width: 90%;
-  margin: 40px;
+  min-width: 70%;
+  margin-left: 15%;
 }
 
 .add-city-title {

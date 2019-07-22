@@ -6,7 +6,7 @@
     <v-btn color="teal" flat @click="componentName =  'Register'">
       <span>Sign in</span>
     </v-btn>
-    <component v-bind:is="componentName"></component>
+    <component v-bind:is="componentName"  class="login"></component>
   </div>
 </template>
 
@@ -25,3 +25,18 @@ export default class Login extends Vue {
   @Prop() componentName: string = "";
 }
 </script>
+
+
+<style lang="scss" scoped>
+
+.home{
+  width:100%;
+  height: 650px;
+  min-height:80%;
+  border:5px 
+}
+.login {
+  background-color:  rgba(0 ,0 ,0, 0) 
+  ;
+}
+</style>

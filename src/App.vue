@@ -1,15 +1,23 @@
+import { Api } from './features/services/api';
 <template>
-  <div id="app">
+  <div id="app" class ="app" >
 
-    <router-view/>
+    <router-view/> 
   </div>
 </template>
 
 
 
 
-
 <style lang="scss">
+
+html{
+background-image: url("./assets/back2.jpg") ;
+background-size: cover;
+}
+
+
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
