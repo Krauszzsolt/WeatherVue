@@ -9,7 +9,7 @@
         <span>Városaim</span>
       </v-btn>
 
-      <v-btn color="teal" flat  to= '/'>
+      <v-btn color="teal" flat   @click="logout"  >
         <span>Kijelentkezés</span>
       </v-btn>
     </v-bottom-nav>
@@ -40,6 +40,13 @@ import WeathertCity from "./../../../features/weatherInCity/view/weather-in-city
 })
 export default class Navbar extends Vue {
   @Prop() componentName: string = "MyCity";
+
+  logout(){
+    console.log('logout');
+    this.$store.dispatch("logout").then(() => {
+      this.$router.push('/')
+    })
+  }
 }
 </script>
 

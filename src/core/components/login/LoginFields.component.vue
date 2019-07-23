@@ -15,13 +15,15 @@
                 </v-toolbar>
                 <v-card-text>
                   <v-form>
-                    <v-text-field v-model="datas.userName" name="Felhasználónév" label="Felhasználónév" type="text"></v-text-field>
+                    <v-text-field  v-model="datas.userName" name="Felhasználónév" label="Felhasználónév" type="text" required ></v-text-field>
                     <v-text-field
+                      
                       v-model="datas.password"
                       name="Jelszó"
                       label="Jelszó"
                       id="password"
                       type="password"
+                      required
                     ></v-text-field>
                   </v-form>
                 </v-card-text>
@@ -42,6 +44,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { loginModel } from "../../models/login.model";
 import router from "../../../router";
+import auth from "@/core/store/auth.store"
 
 @Component
 export default class LoginFields extends Vue {
@@ -54,14 +57,20 @@ export default class LoginFields extends Vue {
   private datas!: loginModel;
 
   login() {
-    if (
-      this.datas.userName === localStorage.getItem(this.datas.userName) &&
-      this.datas.password === localStorage.getItem(this.datas.userName)
-    ) {
-      localStorage.setItem('currentUser', this.datas.userName+'IDs')
-      router.push({ path: "layout" });
 
-    }
+ //   auth.actions.authenticate( this.datas);
+    this.$store.dispatch("authenticate", this.datas)
+    router.push({ path: "layout" });
+      
+
+      //const { this.datas.username , this.datas.password } = this
+     
+    //    this.$store.dispatch(AUTH_REQUEST, this.datas).then(() => {
+  //  this.$router.push('/')
+  //  })
+ 
+
+    
   }
 }
 </script>
