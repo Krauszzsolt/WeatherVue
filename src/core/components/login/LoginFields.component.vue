@@ -7,7 +7,7 @@
             <v-flex xs12 sm8 md4>
               <v-card class="elevation-12">
                 <v-toolbar dark color="primary">
-                  <v-toolbar-title>Felhasználónév</v-toolbar-title>
+                  <v-toolbar-title>Bejelentkezés</v-toolbar-title>
                   <v-spacer></v-spacer>
                   <v-tooltip bottom>
                     <v-icon large></v-icon>

@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <v-btn color="teal" flat @click="componentName =  'LoginFields'">
+    <v-btn color="teal" flat @click ="change('LoginFields')"  >
       <span>Bejelentkezés</span>
     </v-btn>
-    <v-btn color="teal" flat @click="componentName =  'Register'">
+    <v-btn color="teal" flat @click ="change('Register')">
       <span>Regisztráció</span>
     </v-btn>
     <component v-bind:is="componentName"  class="login"></component>
@@ -18,11 +18,26 @@ import Register from "./../components/register/Register.component.vue"; // @ is 
 @Component({
   components: {
     LoginFields,
-    Register
+    Register 
   }
 })
 export default class Login extends Vue {
   @Prop() componentName: string = "";
+
+  store: any
+
+  change( comp : string){
+    console.log(this.$store.getters.compStatus)
+    console.log(comp)
+    this.store = this.$store.dispatch('change' , comp)
+    this.store.then(() => {
+      console.log(this.$store.state.status)
+    })
+    this.componentName= comp;
+    console.log(this.$store.getters.compStatus)
+
+  }
+
 }
 </script>
 
